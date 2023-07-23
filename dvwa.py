@@ -4,6 +4,8 @@ VERSION = '1.0'
 # Import necessary modules
 import requests, argparse, datetime, os, re, socket, time
 import platform
+from json import loads
+from packaging import version
 from bs4 import BeautifulSoup
 
 # Create an argument parser to handle command-line arguments
@@ -11,6 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-u', '--url', type=str, help='scan the URL to detect the upload form')
 parser.add_argument('--cookie', type=str, help='get the cookies from dvwa')
 parser.add_argument('--backdoors', action='store_true', help='list the backdoors')
+parser.add_argument('--update', action='store_true', help='update the tool')
 args = parser.parse_args()
 
 # Define a class named Dvwa
@@ -297,6 +300,51 @@ class Dvwa:
             for file in scan_file:
                 if file.is_file():
                     print(f'[+] {file.name}')
+
+         # check if user has been choose update the tool
+        elif args.update:
+
+            # get the url
+            META_URL = 'https://raw.githubusercontent.com/De-Technocrats/dvwaupsploit/main/metadata.json'
+            req_meta = requests.get(META_URL, timeout=5)
+
+            # check if HTTP status code is 200 that mean success
+            if req_meta.status_code == 200:
+                
+                # init the update
+                metadata = req_meta.text
+                json_data = loads(metadata)
+                version_dvwaupsploit = json_data['version']
+        
+                # check if dvwaupsloit has been available new version
+                if version.parse(version_dvwaupsploit) > version.parse(VERSION):
+        
+                    # if yes, give message
+                    print(f'[!] New update available : {version_dvwaupsploit}')
+        
+                    # ask user to update
+                    ask_update = input('[!] Do you want to update?[y/n]: ')
+                
+                    # if user answer 'y' that mean yes
+                    if ask_update.lower() == 'y':
+            
+                        # Update
+                        newVersion = requests.get("https://raw.githubusercontent.com/De-Technocrats/dvwaupsploit/main/main.py")
+                        open("dvwa.py", "wb").write(newVersion.content)
+                        print("[+] New version downloaded")
+                        print('[!] Dvwaupsploit will be restarting in 3 seconds...')
+                        time.sleep(3)
+                        quit()
+            
+                    # answer 'n' that mean no or else
+                    else:
+                        
+                        # just give pass
+                        pass
+                
+                # i think you will understand what this mean when the tool already latest version
+                else:               
+                    print('[+] Already up to date')
 
 # Run the script 
 if __name__ == "__main__":
