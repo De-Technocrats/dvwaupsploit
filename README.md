@@ -16,12 +16,14 @@ The reason why this tool was created is that we initially wanted to develop a to
 
 ## Install
 ```
-git clone https://github.com/De-Technocrats/dvwaupsploit.git
+1. git clone https://github.com/De-Technocrats/dvwaupsploit.git
+2. cd dvwaupsploit
+3. pip install -r requirements.txt
 ```
 
 ## Usage 
 ```
-python dvwa.py -h
+1. python dvwa.py (-argument)
 ```
 
 ## Screenshots
