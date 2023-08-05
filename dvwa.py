@@ -1,5 +1,5 @@
 # Set the version of the script
-VERSION = '1.0'
+VERSION = '1.1'
 
 # Import necessary modules
 import requests, argparse, datetime, os, re, socket, time
