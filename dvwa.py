@@ -329,7 +329,7 @@ class Dvwa:
                     if ask_update.lower() == 'y':
             
                         # Update
-                        newVersion = requests.get("https://raw.githubusercontent.com/De-Technocrats/dvwaupsploit/main/main.py")
+                        newVersion = requests.get("https://raw.githubusercontent.com/De-Technocrats/dvwaupsploit/main/dvwa.py")
                         open("dvwa.py", "wb").write(newVersion.content)
                         print("[+] New version downloaded")
                         print('[!] Dvwaupsploit will be restarting in 3 seconds...')
