@@ -59,7 +59,7 @@ class Dvwa:
         # Print the ASCII art banner to the console
         print(art)
         print("[*] Developer : De Technocrats")
-        print(f"[*] Version : {VERSION}")
+        print(f"[*] Version : {VERSION} \n")
 
     # Define a method named 'invalidMessage' within the Dvwa class to print an error message for invalid input
     def invalidMessage(self):
