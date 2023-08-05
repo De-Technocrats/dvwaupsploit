@@ -53,13 +53,13 @@ class Dvwa:
 / /_/ /| |/ /| |/ |/ / /_/ / /_/ / /_/ (__  ) /_/ / / /_/ / / /_  
 \__,_/ |___/ |__/|__/\__,_/\__,_/ .___/____/ .___/_/\____/_/\__/  
                                /_/        /_/                                                                                                                                                                     
-        
-[*] Developer : De Technocrats
-[*] Version : 1.0
+ 
         """
 
         # Print the ASCII art banner to the console
         print(art)
+        print("[*] Developer : De Technocrats")
+        print(f"[*] Version : {VERSION}")
 
     # Define a method named 'invalidMessage' within the Dvwa class to print an error message for invalid input
     def invalidMessage(self):
