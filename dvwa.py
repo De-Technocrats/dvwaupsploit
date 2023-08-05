@@ -298,7 +298,7 @@ class Dvwa:
 
             # Iterate through the files in the 'backdoors' directory and print their names
             for file in scan_file:
-                if file.is_file():
+                if file.is_file() and file.name != 'README.md':
                     print(f'[+] {file.name}')
 
          # check if user has been choose update the tool
